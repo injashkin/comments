@@ -1,6 +1,8 @@
 import "./style.css";
+import { formatDate } from "./format-date";
 //import typescriptLogo from './typescript.svg'
 //import { setupCounter } from './counter'
+
 let submits = document.querySelector("[name='submits']");
 
 document.addEventListener("click", handleClick);
@@ -89,14 +91,7 @@ function checkForm(e) {
     if (!e.target.form.date.value) {
       let date = new Date();
 
-      let month = date.getMonth();
-      let day = date.getDate();
-
-      let monthStr = month < 10 ? `0${month}` : `${month}`;
-      let dayStr = day < 10 ? `0${day}` : `${day}`;
-
-      let formate = `${date.getFullYear()}-${monthStr}-${dayStr}`;
-      e.target.form.date.value = formate;
+      e.target.form.date.value = formatDate(date).date;
     }
 
     createComment(e);
