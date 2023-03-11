@@ -20,10 +20,10 @@ function handleClick(e: Event) {
   if (target === submits) formHandling(target);
 }
 
-function createComment(e) {
+function createComment(data, e) {
   let userName = e.target.form.user.value;
   let avatar = [...userName][0].toUpperCase();
-  let date = e.target.form.date.value;
+  //let date = e.target.form.date.value;
   let comment = e.target.form.comment.value;
 
   console.log(avatar);
@@ -42,8 +42,8 @@ function createComment(e) {
           <span class="author publisher-anchor-color"><a href="" data-action="profile">${userName}</a></span>
           <a class="follow-user-container"><span class="follow-user" title="Подписаться"></span></a></span>
 
-        <div class="post-meta" style="display: block">
-          <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">8 месяцев назад ${date}</a>
+        <div class="post-meta">
+          <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">${data.date.word}</a>
         </div>
       </header>
 
@@ -76,27 +76,31 @@ function createComment(e) {
 }
 
 function checkForm(e) {
+  let checkedData = {
+    date: { date: "", word: "" },
+  };
+  let target = e.target;
+
   if (!e.repeat) {
     const newEvent = new Event("click", { bubbles: true, cancelable: true });
-    e.target.nextElementSibling.dispatchEvent(newEvent);
+    target.nextElementSibling.dispatchEvent(newEvent);
 
-    if (!e.target.form.comment.value) {
-      e.target.form.comment.placeholder = "Это поле не должно быть пустым!";
-      e.target.form.comment.style.setProperty("--placeholder-color", "red");
-    }
-    if (!e.target.form.user.value) {
-      e.target.form.user.placeholder = "Это поле не должно быть пустым!";
-      e.target.form.user.style.setProperty("--placeholder-color", "red");
-    }
-    if (!e.target.form.date.value) {
-      let date = new Date();
-
-      e.target.form.date.value = formatDate(date).date;
+    let comment = target.form.comment;
+    if (!comment.value) {
+      comment.placeholder = "Это поле не должно быть пустым!";
+      comment.style.setProperty("--placeholder-color", "red");
     }
 
-    createComment(e);
+    let user = target.form.user;
+    if (!user.value) {
+      user.placeholder = "Это поле не должно быть пустым!";
+      user.style.setProperty("--placeholder-color", "red");
+    }
 
-    //e.target.form.submit()
+    let date = target.form.date;
+    checkedData.date = formatDate(date.value);
+
+    createComment(checkedData, e);
 
     e.preventDefault();
   }
