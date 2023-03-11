@@ -1,121 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Comments</title>
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="comments" id="comments">
-        <div class="comments__header">
-          <h2 class="comments__header-title">
-            <a href="#comments" name="comments">Комментарии</a>
-          </h2>
-          <div class="comments__read-before">
-            <span class="comments__read-before-link"
-              >перед тем как писать…</span
-            >
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comments</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="comments" id="comments">
+      <div class="comments__header">
+        <h2 class="comments__header-title">
+          <a href="#comments" name="comments">Комментарии</a>
+        </h2>
+        <div class="comments__read-before">
+          <span class="comments__read-before-link">перед тем как писать…</span>
         </div>
+      </div>
 
-        <!--===========================================-->
+      <!--===========================================-->
 
-        <div id="form" class="textarea-outer">
-          <div class="post-content">
-            <div class="avatar">
-              <a href="" data-username="Влад" class="user">
-                <div>И</div>
-              </a>
-            </div>
-            <div class="post-body">
-              <div class="textarea-wrapper">
-                <div class="placeholder">Присоединиться к обсуждению...</div>
-              </div>
-            </div>
-          </div>
+
+      <div class="input-content">
+        <div class="avatar">
+          <a href="" data-username="Влад" class="user">
+            <div>И</div>
+          </a>
         </div>
+        <div class="input-body">
+          <div class="textarea-wrapper">
+            <div class="placeholder">Присоединиться к обсуждению...</div>
 
-        <!--===========================================-->
-
-        <div class="post-content">
-          <div class="avatar">
-            <a href="" data-username="Влад" class="user">
-              <div>A</div>
-            </a>
-          </div>
-          <div class="post-body">
-            <header class="comment__header">
-              <span class="post-byline">
-                <span class="author publisher-anchor-color"
-                  ><a href="" data-action="profile">Shira</a></span
-                >
-                <a class="follow-user-container"
-                  ><span class="follow-user" title="Подписаться"></span></a
-              ></span>
-
-              <div class="post-meta" style="display: block">
-                <a
-                  href=""
-                  class="time-ago"
-                  title="Пятница, 8 Июля 2022 г., 20:13"
-                  >8 месяцев назад</a
-                >
+            <form id="form" class="comments__form hide" name="form">
+              <div class="input-group">
+                <input name="user" type="text" class="input-user-name" required placeholder="Введите ваше имя">
+                <input name="date" type="date" class="input-date">
               </div>
-            </header>
-
-            <div class="post-message-container" data-role="message-container">
-              <div class="post-message" data-role="message">
-                <p>
-                  Можно просто прибавить строку к стилям, тогда замены не будет,
-                  причём если какие-то из них уже были заданы, то старые
-                  удалятся, добавятся Я только что протестил в FF овторять его и
-                  изучать ход мышления и потом пробовать самому повторить это
-                  решение. В итоге ты не возможно не "выучишь" способ решения(а
-                  это даже и не нужно), но ты научишься концепциям и подходам,
-                  которые сможешь сам применять и лучше понимать в дальнейшем.
-                  Именно в этом кроется смысл обучения. Несомненно нужно думать
-                  самому сначала, но если долгое время не получается, то не
-                  стоять на месте, а двигаться дальше посмотрев решения и
-                </p>
-              </div>
-            </div>
-
-            <!-- ****************************** -->
-
-            <footer class="comment__footer">
-              <menu class="comment-footer__menu">
-                <li class="voting">
-                  <div class="post-votes">
-                    <a
-                      href="#"
-                      class="vote-up"
-                      title="Голосовать"
-                      name="Голосовать"
-                      ><span class="control"
-                        ><img src="./src/image/like.svg"
-                      /></span>
-                      <span class="updatable count">0</span></a
-                    >
-                  </div>
-                </li>
-                <li class="reply">
-                  <a class="comment-footer__action" href="#" data-action="reply"
-                    ><span class="text">Ответить</span></a
-                  >
-                </li>
-              </menu>
-            </footer>
+              <textarea name="comment" type="text" class="new-post" required
+                placeholder="Введите комментарий"></textarea>
+              <input name="submits" type="button" value="Сохранить">
+            </form>
           </div>
         </div>
       </div>
+
+
+      <!--===========================================-->
+
+      <div class="post-content">
+        <div class="avatar">
+          <a href="" data-username="Влад" class="user">
+            <div>A</div>
+          </a>
+        </div>
+        <div class="post-body">
+          <header class="comment__header">
+            <span class="post-byline">
+              <span class="author publisher-anchor-color"><a href="" data-action="profile">Shira</a></span>
+              <a class="follow-user-container"><span class="follow-user" title="Подписаться"></span></a></span>
+
+            <div class="post-meta" style="display: block">
+              <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">8 месяцев назад</a>
+            </div>
+          </header>
+
+          <div class="post-message-container" data-role="message-container">
+            <div class="post-message" data-role="message">
+              <p>
+                Можно просто прибавить строку к стилям, тогда замены не будет,
+                причём если какие-то из них уже были заданы, то старые
+                удалятся, добавятся Я только что протестил в FF овторять его и
+                изучать ход мышления и потом пробовать самому повторить это
+                решение. В итоге ты не возможно не "выучишь" способ решения(а
+                это даже и не нужно), но ты научишься концепциям и подходам,
+                которые сможешь сам применять и лучше понимать в дальнейшем.
+                Именно в этом кроется смысл обучения. Несомненно нужно думать
+                самому сначала, но если долгое время не получается, то не
+                стоять на месте, а двигаться дальше посмотрев решения и
+              </p>
+            </div>
+          </div>
+
+          <!-- ****************************** -->
+
+          <footer class="comment__footer">
+            <menu class="comment-footer__menu">
+              <li class="voting">
+                <div class="post-votes">
+                  <a href="#" class="vote-up" title="Голосовать" name="Голосовать"><span class="control"><img
+                        src="./src/image/like.svg" /></span>
+                    <span class="updatable count">0</span></a>
+                </div>
+              </li>
+              <li class="reply">
+                <a class="comment-footer__action" href="#" data-action="reply"><span class="text">Ответить</span></a>
+              </li>
+            </menu>
+          </footer>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- ============================ -->
+  <!-- ============================ -->
 
-    <!--<div id="app"></div>-->
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  <!--<div id="app"></div>-->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
