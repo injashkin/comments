@@ -1,7 +1,6 @@
 import "./style.css";
 import { formatDate } from "./format-date";
 //import typescriptLogo from './typescript.svg'
-//import { setupCounter } from './counter'
 
 let submits = document.querySelector("[name='submits']");
 
@@ -13,20 +12,39 @@ document.addEventListener("keydown", handleKeydown);
 function handleClick(e: Event) {
   let textarea = document.querySelector(".textarea-wrapper");
 
-  let target = e.target;
+  //let { target } = e;
+  const target = <HTMLButtonElement>e.target;
 
-  console.log("handleClick", e.target);
-  if (target === textarea) editComment(target);
-  if (target === submits) formHandling(target);
+  const placeholder = target.querySelector<HTMLButtonElement>(".placeholder")!;
+
+  if (target === textarea) editComment(placeholder);
 }
 
-function createComment(data, e) {
-  let userName = e.target.form.user.value;
+function handleKeydown(e: any) {
+  const ev = e as KeyboardEvent;
+  const target = e.target;
+
+  if (ev.code == "Enter" && !ev.shiftKey) {
+    if (target.closest("#form")) {
+      const form = <HTMLFormElement>document.querySelector("#form");
+
+      const checkedForm = checkForm(form);
+      createComment(checkedForm);
+    }
+  }
+}
+
+function createComment(form: HTMLFormElement) {
+  const { user, comment, date } = form;
+
+  console.log(date.value);
+
+  const { dateFormat, dateWord } = formatDate(date.value);
+
+  let userName = user.value;
   let avatar = [...userName][0].toUpperCase();
   //let date = e.target.form.date.value;
-  let comment = e.target.form.comment.value;
 
-  console.log(avatar);
   let inputContent = document.querySelector(".input-content");
   let newComment = document.createElement("div");
   newComment.innerHTML = `
@@ -43,13 +61,13 @@ function createComment(data, e) {
           <a class="follow-user-container"><span class="follow-user" title="Подписаться"></span></a></span>
 
         <div class="post-meta">
-          <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">${data.date.word}</a>
+          <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">${dateWord}</a>
         </div>
       </header>
 
       <div class="post-message-container" data-role="message-container">
         <div class="post-message" data-role="message">
-          <p>${comment}</p>
+          <p>${comment.value}</p>
         </div>
       </div>
 
@@ -75,56 +93,36 @@ function createComment(data, e) {
   inputContent?.after(newComment);
 }
 
-function checkForm(e) {
-  let checkedData = {
-    date: { date: "", word: "" },
-  };
-  let target = e.target;
+function checkForm(form: HTMLFormElement) {
+  const { user, comment } = form;
 
-  if (!e.repeat) {
-    const newEvent = new Event("click", { bubbles: true, cancelable: true });
-    target.nextElementSibling.dispatchEvent(newEvent);
+  //if (!e.repeat) {
+  //const newEvent = new Event("click", { bubbles: true, cancelable: true });
+  //target.nextElementSibling.dispatchEvent(newEvent);
 
-    let comment = target.form.comment;
-    if (!comment.value) {
-      comment.placeholder = "Это поле не должно быть пустым!";
-      comment.style.setProperty("--placeholder-color", "red");
-    }
-
-    let user = target.form.user;
-    if (!user.value) {
-      user.placeholder = "Это поле не должно быть пустым!";
-      user.style.setProperty("--placeholder-color", "red");
-    }
-
-    let date = target.form.date;
-    checkedData.date = formatDate(date.value);
-
-    createComment(checkedData, e);
-
-    e.preventDefault();
+  if (!user.value) {
+    user.placeholder = "Это поле не должно быть пустым!";
+    user.style.setProperty("--placeholder-color", "red");
   }
+
+  if (!comment.value) {
+    comment.placeholder = "Это поле не должно быть пустым!";
+    comment.style.setProperty("--placeholder-color", "red");
+  }
+
+  //e.preventDefault();
+  // }
+  return form;
 }
 
-function handleKeydown(e: any) {
-  if (e.code == "Enter" && !e.shiftKey) {
-    checkForm(e);
-  }
-}
-
-function editComment(target: any) {
-  //if (target.contains(target.querySelector("input"))) return;
-  let placeholder = target.querySelector(".placeholder");
-
+function editComment(placeholder: HTMLButtonElement) {
   if (placeholder.classList.contains("hide")) return;
   placeholder.classList.add("hide");
 
-  let form = document.forms.form; //querySelector(".comments__form");
-  form.classList.remove("hide");
-}
+  let form = <HTMLElement>placeholder.nextElementSibling;
 
-function formHandling(target: any) {
-  //if(target != )
+  //let form = document.forms.form; //querySelector(".comments__form");
+  form.classList.remove("hide");
 }
 
 /*
