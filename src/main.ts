@@ -39,7 +39,7 @@ function createComment(form: HTMLFormElement) {
 
   console.log(date.value);
 
-  const { dateFormat, dateWord } = formatDate(date.value);
+  const { timeFormat, dateWord } = formatDate(date.value);
 
   let userName = user.value;
   let avatar = [...userName][0].toUpperCase();
@@ -61,7 +61,7 @@ function createComment(form: HTMLFormElement) {
           <a class="follow-user-container"><span class="follow-user" title="Подписаться"></span></a></span>
 
         <div class="post-meta">
-          <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">${dateWord}</a>
+          <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">${dateWord}, в ${timeFormat}</a>
         </div>
       </header>
 
