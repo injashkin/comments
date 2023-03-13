@@ -7,7 +7,7 @@ const comments = <HTMLElement>document.querySelector("#comments");
 document.addEventListener("click", handleClick);
 document.addEventListener("keydown", handleKeydown);
 
-// ========================================================
+// ====================== Functions ==========================
 
 function handleKeydown(e: any) {
   const ev = e as KeyboardEvent;
@@ -54,8 +54,6 @@ function handleClick(e: Event) {
     if (!checkForm(form)) return;
     const newComment = createComment(form);
     inputContent.after(newComment);
-    //const checkedForm = checkForm(form);
-    // const newComment = createComment(checkedForm);
 
     if (inputContent.closest(".children")) {
       inputContent.remove();
