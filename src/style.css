@@ -243,6 +243,10 @@ body {
 
 /* ============================================ */
 
+.src-samples {
+  display: none;
+}
+
 .children {
   margin-left: 3rem;
 }

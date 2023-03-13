@@ -1,6 +1,8 @@
 import "./style.css";
 import { formatDate } from "./format-date";
-//import typescriptLogo from './typescript.svg'
+import favoriteSvg from "./image/favorite.svg"
+import favoriteFillSvg from "./image/favorite_fill.svg"
+import deleteSvg from "./image/delete.svg"
 
 const comments = <HTMLElement>document.querySelector("#comments");
 
@@ -73,12 +75,12 @@ function handleClick(e: Event) {
     const img = <HTMLImageElement>voting.querySelector("img");
     const count = <HTMLElement>voting.querySelector(".count");
 
-    if (img.getAttribute("src") === "/src/image/favorite.svg") {
-      img.setAttribute("src", "/src/image/favorite_fill.svg");
+    if (img.getAttribute("src") === favoriteSvg) {
+      img.setAttribute("src", favoriteFillSvg);
       if (count.textContent)
         count.textContent = (+count.textContent + 1).toString();
     } else {
-      img.setAttribute("src", "/src/image/favorite.svg");
+      img.setAttribute("src", favoriteSvg);
       if (count.textContent)
         count.textContent = (+count.textContent - 1).toString();
     }
@@ -118,8 +120,6 @@ function createComment(form: HTMLFormElement) {
   let avatar = [...userName][0].toUpperCase();
 
   let newComment = document.createElement("div");
-  let srcFavorite = "/src/image/favorite.svg";
-  let srcDelete = "/src/image/delete.svg";
 
   newComment.innerHTML = `
   <div class="post-wrapper">
@@ -151,7 +151,7 @@ function createComment(form: HTMLFormElement) {
             <div class="voting">
               <div class="post-votes">
                 <a href="#" class="vote-up" title="Голосовать" name="Голосовать"><span class="control"><img
-                      src=${srcFavorite} /></span>
+                      src=${favoriteSvg} /></span>
                   <span class="updatable count">0</span></a>
               </div>
             </div>
@@ -159,7 +159,7 @@ function createComment(form: HTMLFormElement) {
               <a class="comment-footer__action" href="#" data-action="reply"><span class="text">Ответить</span></a>
             </div>
             <div class="comment-delete">
-              <a href="#" title="Удалить комментарий"><img src=${srcDelete} /></a>
+              <a href="#" title="Удалить комментарий"><img src=${deleteSvg} /></a>
             </div>
           </menu>
         </footer>
