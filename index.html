@@ -30,17 +30,17 @@
           </a>
         </div>
         <div class="input-body">
-          <div class="textarea-wrapper">
-            <div class="placeholder">Присоединиться к обсуждению...</div>
+          <div class="form-wrapper">
+            <div class="appeal">Присоединиться к обсуждению...</div>
 
-            <form id="form" class="comments__form hide" name="form">
+            <form class="comments__form hide" name="form">
               <div class="input-group">
                 <input name="user" type="text" class="input-user-name" required placeholder="Введите ваше имя">
                 <input name="date" type="date" class="input-date">
               </div>
-              <textarea name="comment" type="text" class="new-post" required
+              <textarea name="comment" type="text" class="input__comment" required
                 placeholder="Введите комментарий"></textarea>
-              <input name="submits" type="button" value="Сохранить">
+              <input class="comments__submit" name="submit" type="button" value="Сохранить">
             </form>
           </div>
         </div>
@@ -49,58 +49,62 @@
 
       <!--===========================================-->
 
-      <div class="post-content">
-        <div class="avatar">
-          <a href="" data-username="Влад" class="user">
-            <div>A</div>
-          </a>
-        </div>
-        <div class="post-body">
-          <header class="comment__header">
-            <span class="post-byline">
-              <span class="author publisher-anchor-color"><a href="" data-action="profile">Shira</a></span>
-              <a class="follow-user-container"><span class="follow-user" title="Подписаться"></span></a></span>
-
-            <div class="post-meta">
-              <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">8 месяцев назад</a>
-            </div>
-          </header>
-
-          <div class="post-message-container" data-role="message-container">
-            <div class="post-message" data-role="message">
-              <p>
-                Можно просто прибавить строку к стилям, тогда замены не будет,
-                причём если какие-то из них уже были заданы, то старые
-                удалятся, добавятся Я только что протестил в FF овторять его и
-                изучать ход мышления и потом пробовать самому повторить это
-                решение. В итоге ты не возможно не "выучишь" способ решения(а
-                это даже и не нужно), но ты научишься концепциям и подходам,
-                которые сможешь сам применять и лучше понимать в дальнейшем.
-                Именно в этом кроется смысл обучения. Несомненно нужно думать
-                самому сначала, но если долгое время не получается, то не
-                стоять на месте, а двигаться дальше посмотрев решения и
-              </p>
-            </div>
+      <div class="post-wrapper">
+        <div class="post-content">
+          <div class="avatar">
+            <a href="" data-username="Влад" class="user">
+              <div>A</div>
+            </a>
           </div>
+          <div class="post-body">
+            <header class="comment__header">
+              <span class="post-byline">
+                <span class="author publisher-anchor-color"><a href="" data-action="profile">Shira</a></span>
+                <a class="follow-user-container"><span class="follow-user" title="Подписаться"></span></a></span>
 
-          <!-- ****************************** -->
+              <div class="post-meta">
+                <a href="" class="time-ago" title="Пятница, 8 Июля 2022 г., 20:13">8 месяцев назад</a>
+              </div>
+            </header>
 
-          <footer class="comment__footer">
-            <menu class="comment-footer__menu">
-              <li class="voting">
-                <div class="post-votes">
-                  <a href="#" class="vote-up" title="Голосовать" name="Голосовать"><span class="control"><img
-                        src="./src/image/like.svg" /></span>
-                    <span class="updatable count">0</span></a>
+            <div class="post-message-container" data-role="message-container">
+              <div class="post-message" data-role="message">
+                <p>
+                  Можно просто прибавить строку к стилям, тогда замены не будет,
+                  причём если какие-то из них уже были заданы, то старые
+                  удалятся, добавятся Я только что протестил в FF овторять его и
+                  изучать ход мышления и потом пробовать самому повторить это
+                  решение. В итоге ты не возможно не "выучишь" способ решения(а
+                  это даже и не нужно), но ты научишься концепциям и подходам,
+                  которые сможешь сам применять и лучше понимать в дальнейшем.
+                  Именно в этом кроется смысл обучения. Несомненно нужно думать
+                  самому сначала, но если долгое время не получается, то не
+                  стоять на месте, а двигаться дальше посмотрев решения и
+                </p>
+              </div>
+            </div>
+            <!-- ****************************** -->
+            <footer class="comment__footer">
+              <menu class="comment-footer__menu">
+                <div class="voting">
+                  <div class="post-votes">
+                    <a href="#" class="vote-up" title="Голосовать" name="Голосовать"><span class="control"><img
+                          src="/src/image/favorite.svg" /></span>
+                      <span class="updatable count">3</span></a>
+                  </div>
                 </div>
-              </li>
-              <li class="reply">
-                <a class="comment-footer__action" href="#" data-action="reply"><span class="text">Ответить</span></a>
-              </li>
-            </menu>
-          </footer>
+                <div class="reply">
+                  <a class="comment-footer__action" href="#"><span class="text">Ответить</span></a>
+                </div>
+                <div class="comment-delete">
+                  <a href="#" title="Удалить комментарий"><img src="/src/image/delete.svg" /></a>
+                </div>
+              </menu>
+            </footer>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 
