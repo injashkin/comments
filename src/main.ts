@@ -118,6 +118,8 @@ function createComment(form: HTMLFormElement) {
   let avatar = [...userName][0].toUpperCase();
 
   let newComment = document.createElement("div");
+  let srcFavorite = "/src/image/favorite.svg";
+  let srcDelete = "/src/image/delete.svg";
 
   newComment.innerHTML = `
   <div class="post-wrapper">
@@ -149,7 +151,7 @@ function createComment(form: HTMLFormElement) {
             <div class="voting">
               <div class="post-votes">
                 <a href="#" class="vote-up" title="Голосовать" name="Голосовать"><span class="control"><img
-                      src="/src/image/favorite.svg" /></span>
+                      src=${srcFavorite} /></span>
                   <span class="updatable count">0</span></a>
               </div>
             </div>
@@ -157,7 +159,7 @@ function createComment(form: HTMLFormElement) {
               <a class="comment-footer__action" href="#" data-action="reply"><span class="text">Ответить</span></a>
             </div>
             <div class="comment-delete">
-              <a href="#" title="Удалить комментарий"><img src="/src/image/delete.svg"/></a>
+              <a href="#" title="Удалить комментарий"><img src=${srcDelete} /></a>
             </div>
           </menu>
         </footer>
