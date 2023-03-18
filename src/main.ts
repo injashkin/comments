@@ -1,11 +1,14 @@
 import "./style.css";
+import "./tooltip.css";
 import { formatDate } from "./format-date";
+import { tooltip } from "./tooltip";
 import favoriteSvg from "./image/favorite.svg";
 import favoriteFillSvg from "./image/favorite_fill.svg";
 import deleteSvg from "./image/delete.svg";
 
 const comments = <HTMLElement>document.querySelector("#comments");
 
+tooltip()
 document.addEventListener("click", handleClick);
 document.addEventListener("keydown", handleKeydown);
 
