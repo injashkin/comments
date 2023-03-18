@@ -1,8 +1,8 @@
 import "./style.css";
 import { formatDate } from "./format-date";
-import favoriteSvg from "./image/favorite.svg"
-import favoriteFillSvg from "./image/favorite_fill.svg"
-import deleteSvg from "./image/delete.svg"
+import favoriteSvg from "./image/favorite.svg";
+import favoriteFillSvg from "./image/favorite_fill.svg";
+import deleteSvg from "./image/delete.svg";
 
 const comments = <HTMLElement>document.querySelector("#comments");
 
@@ -11,11 +11,10 @@ document.addEventListener("keydown", handleKeydown);
 
 // ====================== Functions ==========================
 
-function handleKeydown(e: any) {
-  const ev = e as KeyboardEvent;
-  const target = e.target;
+function handleKeydown(e: KeyboardEvent) {
+  const target = <HTMLButtonElement>e.target;
 
-  if (ev.code == "Enter" && !ev.shiftKey) {
+  if (e.code == "Enter" && !e.shiftKey) {
     if (target.closest(".comments__form")) {
       const form = <HTMLFormElement>target.closest(".comments__form");
       const submit = <HTMLFormElement>form.querySelector(".comments__submit");
@@ -34,7 +33,7 @@ function handleKeydown(e: any) {
   }
 }
 
-function handleClick(e: Event) {
+function handleClick(e: MouseEvent) {
   const target = <HTMLButtonElement>e.target;
 
   if (target.closest(".form-wrapper")) {
