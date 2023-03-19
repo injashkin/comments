@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/comments/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comments</title>
+    <script type="module" crossorigin src="/comments/assets/index-74d86110.js"></script>
+    <link rel="stylesheet" href="/comments/assets/index-34b93557.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="comments" id="comments">
+        <div class="comments__header">
+          <h2 class="comments__header-title">
+            <a href="" name="comments">Комментарии</a>
+          </h2>
+          <div class="comments__read-before">
+            <div data-tooltip="">
+              <span class="comments__read-before-link"
+                >перед тем как писать…</span
+              >
+              <ul>
+                <li>
+                  Если вам кажется, что в статье что-то не так - вместо
+                  комментария напишите
+                  <a href="https://github.com/" target="_blank">на GitHub</a>
+                </li>
+                <li>
+                  Для одной строки кода используйте тег, для нескольких строк
+                  кода — тег, если больше 10 строк — ссылку на песочницу
+                  <a href="http://jsbin.com" target="_blank">JSBin</a>,
+                  <a href="http://codepen.io" target="_blank">codepen</a>
+                </li>
+                <li>
+                  Если что-то непонятно в статье — пишите, что именно и с какого
+                  места.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--===========================================-->
+
+        <div class="input-content">
+          <div class="avatar">
+            <a href="" data-username="Влад" class="user">
+              <div>И</div>
+            </a>
+          </div>
+          <div class="input-body">
+            <div class="form-wrapper">
+              <div class="appeal">Присоединиться к обсуждению...</div>
+
+              <form class="comments__form hide" name="form">
+                <div class="input-group">
+                  <input
+                    name="user"
+                    type="text"
+                    class="input-user-name"
+                    required
+                    placeholder="Введите ваше имя"
+                  />
+                  <input name="date" type="date" class="input-date" />
+                </div>
+                <textarea
+                  name="comment"
+                  type="text"
+                  class="input__comment"
+                  required
+                  placeholder="Введите комментарий"
+                ></textarea>
+                <input
+                  class="comments__submit"
+                  name="submit"
+                  type="button"
+                  value="Сохранить"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!--===========================================-->
+
+        <div class="post-wrapper">
+          <div class="post-content">
+            <div class="avatar">
+              <a href="" class="user">
+                <div>И</div>
+              </a>
+            </div>
+            <div class="post-body">
+              <header class="comment__header">
+                <span class="post-byline">
+                  <span class="author"
+                    ><a href="" data-action="profile">Игорь Яшкин</a></span
+                  >
+                  <a class="follow-user-container"
+                    ><span class="follow-user" title="Подписаться"></span></a
+                ></span>
+
+                <div class="post-meta">
+                  <a href="" class="time-ago">12 дней назад, в 09:25</a>
+                </div>
+              </header>
+
+              <div class="post-message-container" data-role="message-container">
+                <div class="post-message" data-role="message">
+                  <p>
+                    Блок комментариев написан на TypeScript. Имеется возможность
+                    добавлять и удалять комментарии к статье, а также отвечать
+                    на другие комментарии. Для этого под каждым комментарием
+                    есть ссылка "Ответить". Поддерживается иерархическая
+                    структура комментариев. В качестве аватара автоматически
+                    устанавливается первая буква имени
+                  </p>
+                  <p>
+                    Написал и добавил компонент для всплывающих подсказок.
+                    Демонстрацию его работы можно увидеть если навести курсором
+                    на надпись "перед тем как написать...". Подсказки
+                    адаптивные, учитывают размеры экрана. Установить подсказку
+                    можно любому элементу, для этого нужно добавить в нужный
+                    элемент атрибут data-tooltip. Можно добавлять, как простые
+                    подсказки, устанавливая атрибуту data-tooltip нужный текст,
+                    так и подсказки, структурированные HTML тегами .
+                  </p>
+                </div>
+              </div>
+              <!-- ****************************** -->
+              <footer class="comment__footer">
+                <menu class="comment-footer__menu">
+                  <div class="voting">
+                    <div class="post-votes">
+                      <a
+                        href="#"
+                        class="vote-up"
+                        title="Голосовать"
+                        name="Голосовать"
+                        ><span class="control"
+                          ><img src="/comments/assets/favorite-778060ce.svg"
+                        /></span>
+                        <span class="updatable count">3</span></a
+                      >
+                    </div>
+                  </div>
+                  <div class="reply">
+                    <a class="comment-footer__action" href="#"
+                      ><span class="text">Ответить</span></a
+                    >
+                  </div>
+                  <div class="comment-delete">
+                    <a href="#" title="Удалить комментарий"
+                      ><img src="/comments/assets/delete-1daacdcf.svg"
+                    /></a>
+                  </div>
+                </menu>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================ -->
+
+    
+  </body>
+</html>
