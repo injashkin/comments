@@ -8,25 +8,30 @@
  * Объект со свойствами:
  * dateFormat - Дата в формате ДД-ММ-ГГГГ
  * dateWord - словесная форма
- * timeFormat - Время в формате ЧЧ:ММ
+ * timeFormat - Время в формате ЧЧ:ММ. Если на входе дата указана строкой в
+ * формате ГГГГ-ММ-ДД, то timeFormat вернет текущее время
  */
 export function formatDate(date: Date | string) {
-  let copyDate = date;
-  const now = new Date();
-
-  if (!copyDate) {
-    copyDate = now;
-  } else if (typeof copyDate === "string") copyDate = new Date(copyDate);
-
-  const diff = <any>now - <any>copyDate;
-  const ago = Math.floor(diff / (84600 * 1000));
-  if (ago < 1) copyDate = now;
-
   const result = {
     dateFormat: "",
     dateWord: "",
     timeFormat: "",
   };
+
+  let copyDate = date;
+  const now = new Date();
+
+  if (!copyDate) {
+    copyDate = now;
+    result.timeFormat = formatTime(now);
+  } else if (typeof copyDate == "string") {
+    copyDate = new Date(copyDate);
+    result.timeFormat = formatTime(now);
+  } else result.timeFormat = formatTime(copyDate);
+
+  const diff = <any>now - <any>copyDate;
+  const ago = Math.floor(diff / (84600 * 1000));
+  if (ago < 1) copyDate = now;
 
   //===========================================
 
@@ -40,13 +45,15 @@ export function formatDate(date: Date | string) {
 
   //===========================================
 
-  const hours = copyDate.getHours();
-  const minutes = copyDate.getMinutes();
+  function formatTime(date: Date) {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
 
-  const hoursStr = hours < 10 ? `0${hours}` : `${hours}`;
-  const minutesStr = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const hoursStr = hours < 10 ? `0${hours}` : `${hours}`;
+    const minutesStr = minutes < 10 ? `0${minutes}` : `${minutes}`;
 
-  result.timeFormat = `${hoursStr}:${minutesStr}`;
+    return `${hoursStr}:${minutesStr}`; // вернет время в формате ЧЧ:ММ
+  }
 
   //===========================================
 

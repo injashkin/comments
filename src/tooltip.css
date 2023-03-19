@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-[data-tooltip=""]> :last-child {
+[data-tooltip=""] > :last-child {
   position: fixed;
   display: block;
   left: 3000px;
@@ -33,4 +33,10 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
   background-color: var(--background-color);
   padding: 1rem 1rem 1rem 2rem;
+}
+
+@media(max-width: 600px) {
+  [data-tooltip=""]> :last-child {
+    min-width: 310px;
+  }
 }

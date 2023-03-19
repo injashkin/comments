@@ -52,6 +52,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin-bottom: 1rem;
+}
+
 body {
   font-size: 16px;
   font-weight: 400;
@@ -59,6 +63,7 @@ body {
   font-size: 100%;
   line-height: 1;
   font-family: "Roboto", sans-serif;
+  padding: 0.5rem;
 }
 
 .container {
@@ -73,11 +78,12 @@ body {
 .comments__header {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0;
 }
 
 .comment__header .author a {
   font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
 }
 
 .comment__header {
@@ -117,6 +123,10 @@ body {
   flex-direction: column;
   justify-content: stretch;
   width: 100%;
+}
+
+.post-meta {
+  margin: 0.5rem auto;
 }
 
 .input-content {
@@ -236,13 +246,16 @@ body {
 }
 
 /* ============================================ */
+code {
+  font-size: 1rem;
+}
 
 .src-samples {
   display: none;
 }
 
 .children {
-  margin-left: 3rem;
+  margin-left: 4rem;
 }
 
 .hide {
