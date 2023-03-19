@@ -1,3 +1,8 @@
+:root {
+  --main-color: black;
+  --background-color: white;
+}
+
 .tooltip {
   position: fixed;
   z-index: 100;
@@ -16,15 +21,16 @@
   cursor: pointer;
 }
 
-[data-tooltip=""] > :last-child {
+[data-tooltip=""]> :last-child {
   position: fixed;
   display: block;
   left: 3000px;
   top: 100px;
-  z-index: 1000;
-  opacity: 0.5;
+  z-index: 9000;
   min-width: 590px;
   border-radius: 4px;
-  transition: opacity .2s ease-out .2s;
-  box-shadow: 0 2px 5px rgba(0,0,0,.3);
+  transition: opacity .3s ease-out .2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  background-color: var(--background-color);
+  padding: 1rem 1rem 1rem 2rem;
 }

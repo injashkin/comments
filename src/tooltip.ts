@@ -53,19 +53,29 @@ export function tooltip() {
     styles.top = tooltip.style.top;
     styles.opacity = tooltip.style.opacity;
 
-    position(dataTooltip);
+    position(dataTooltip, tooltip);
   }
 
-  function position(dataTooltip: HTMLElement) {
+  function position(dataTooltip: HTMLElement, tooltip: HTMLElement) {
     let rect = dataTooltip.getBoundingClientRect();
 
     let leftPos =
       rect.left + (dataTooltip.offsetWidth - tooltip.offsetWidth) / 2;
-    let topPos = rect.top - tooltip.offsetHeight - 5;
+    let topPos = rect.top - tooltip.offsetHeight;
+    let rightPos = leftPos + tooltip.offsetWidth;
+    let bottomPos = topPos + tooltip.offsetHeight;
 
     // Предотвращает выход за пределы экрана
     if (leftPos < 0) leftPos = 0;
-    if (topPos < 0) topPos = rect.top + dataTooltip.offsetHeight + 5;
+    if (rightPos > document.documentElement.clientWidth) {
+      leftPos =
+        document.documentElement.clientWidth - tooltip.offsetWidth;
+    }
+    if (topPos < 0) topPos = rect.top + dataTooltip.offsetHeight;
+    if (bottomPos > document.documentElement.clientHeight) {
+      topPos =
+        document.documentElement.clientHeight - tooltip.offsetHeight;
+    }
 
     tooltip.style.left = `${leftPos}px`;
     tooltip.style.top = `${topPos}px`;
@@ -82,7 +92,7 @@ export function tooltip() {
     tooltip.innerHTML = tooltipText;
     tooltip.className = "tooltip";
     target.after(tooltip);
-    position(dataTooltip);
+    position(dataTooltip, tooltip);
   }
 
   function hideTooltip() {
@@ -91,11 +101,11 @@ export function tooltip() {
     }
 
     if (tooltip && type === "complete") {
-      stash();
+      stash(tooltip);
     }
   }
 
-  function stash() {
+  function stash(tooltip: HTMLElement) {
     tooltip.style.left = styles.left;
     tooltip.style.top = styles.top;
     tooltip.style.opacity = styles.opacity;
